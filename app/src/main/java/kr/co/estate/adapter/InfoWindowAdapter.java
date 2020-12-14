@@ -31,6 +31,8 @@ public class InfoWindowAdapter extends InfoWindow.ViewAdapter {
         int price = Double.valueOf(tradeAggsDto.getAmountAverage()).intValue();
         if (price >= 10000) {
             textViewPrice.setText(String.format("%.1f억", (price / (double) 10000)));
+        } else {
+            textViewPrice.setText(String.format("%.1f천", (price / (double) 1000)));
         }
 
         TextView count = linearLayout.findViewById(R.id.count);
