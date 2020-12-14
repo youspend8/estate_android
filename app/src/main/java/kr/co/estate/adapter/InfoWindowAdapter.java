@@ -1,6 +1,8 @@
 package kr.co.estate.adapter;
 
 import android.view.View;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 
@@ -19,6 +21,21 @@ public class InfoWindowAdapter extends InfoWindow.ViewAdapter {
     @NonNull
     @Override
     public View getView(@NonNull InfoWindow infoWindow) {
-        return View.inflate(mapFragment.getContext(), R.layout.info_window_view, null);
+        LinearLayout linearLayout = (LinearLayout) View.inflate(mapFragment.getContext(), R.layout.info_window_view, null);
+
+        TextView city = linearLayout.findViewById(R.id.city);
+        city.setText(tradeAggsDto.getName());
+
+        TextView textViewPrice = linearLayout.findViewById(R.id.price);
+
+        int price = Double.valueOf(tradeAggsDto.getAmountAverage()).intValue();
+        if (price >= 10000) {
+            textViewPrice.setText(String.format("%.1f억", (price / (double) 10000)));
+        }
+
+        TextView count = linearLayout.findViewById(R.id.count);
+        count.setText(String.format("%s건", tradeAggsDto.getCount()));
+
+        return linearLayout;
     }
 }
