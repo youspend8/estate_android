@@ -2,6 +2,7 @@ package kr.co.estate.fragment;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -12,17 +13,15 @@ import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
-import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.util.FusedLocationSource;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.estate.MainActivity;
 import kr.co.estate.client.RetrofitApiSpecification;
 import kr.co.estate.client.RetrofitClient;
+import kr.co.estate.collection.Markers;
 import kr.co.estate.dto.ApiResponse;
-import kr.co.estate.dto.CoordinateDto;
 import kr.co.estate.dto.TradeAggsDto;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,23 +32,8 @@ public class NaverMapFragment extends MapFragment implements OnMapReadyCallback 
     private NaverMap naverMap;
     private RetrofitApiSpecification specification;
     private FusedLocationSource locationSource;
-    private List<Marker> markerList = new ArrayList<>();
     private double prevZoomLevel;
-
-    private void removeMarkerList() {
-        for (Marker marker : markerList) {
-            marker.setMap(null);
-        }
-        markerList.clear();
-    }
-
-    private void addMarkerList(NaverMap naverMap) {
-        for (Marker marker : markerList) {
-            marker.setHideCollidedSymbols(true);
-            marker.setHideCollidedMarkers(true);
-            marker.setMap(naverMap);
-        }
-    }
+    private Markers markers;
 
     private void requestCoords(NaverMap naverMap, double zoom) {
         LatLngBounds latLngBounds = naverMap.getContentBounds();
@@ -68,20 +52,23 @@ public class NaverMapFragment extends MapFragment implements OnMapReadyCallback 
             public void onResponse(Call<ApiResponse<List<TradeAggsDto>>> call, Response<ApiResponse<List<TradeAggsDto>>> response) {
                 Log.d("response.code()",response.code() + "");
 
-                ApiResponse<List<TradeAggsDto>> responseBody = response.body();
-
-                List<TradeAggsDto> list = responseBody.getData();
-
-                Log.i("result", list + "");
-
-                removeMarkerList();
-
-                for (TradeAggsDto tradeAggsDto : list) {
-                    CoordinateDto coordinate = tradeAggsDto.getCoordinate();
-                    markerList.add(coordinate.asMarker());
+                if (response.code() != 200) {
+                    Toast.makeText(activity.getApplicationContext(), "데이터 요청에 실패했습니다.", Toast.LENGTH_LONG).show();
+                    return;
                 }
 
-                addMarkerList(naverMap);
+                ApiResponse<List<TradeAggsDto>> responseBody = response.body();
+                if (responseBody == null || responseBody.isDataEmpty()) {
+                    Toast.makeText(activity.getApplicationContext(), "데이터가 없습니다.", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                List<TradeAggsDto> list = responseBody.getData();
+
+                Log.i("response data", list + "");
+
+                markers.removeAllOnMap();
+                markers.setMarkersFrom(list);
+                markers.addAllOnMap(naverMap);
             }
 
             @Override
@@ -106,6 +93,8 @@ public class NaverMapFragment extends MapFragment implements OnMapReadyCallback 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         this.naverMap = naverMap;
+
+        markers = new Markers(this, naverMap);
 
         naverMap.setLocationTrackingMode(LocationTrackingMode.NoFollow);
         naverMap.setLocationSource(locationSource);

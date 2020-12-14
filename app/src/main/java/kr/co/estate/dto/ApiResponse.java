@@ -18,4 +18,8 @@ public class ApiResponse<T> {
 
     @SerializedName("data")
     private T data;
+
+    public boolean isDataEmpty() {
+        return data == null;
+    }
 }

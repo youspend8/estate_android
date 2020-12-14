@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="InfoWindowView">
+        <attr name="boolKey" format="boolean" />
+        <attr name="intKey" format="integer" />
+        <attr name="stringKey" format="string" />
+    </declare-styleable>
+</resources>

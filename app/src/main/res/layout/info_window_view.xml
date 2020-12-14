@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/infoWindowView"
+    android:layout_width="60dp"
+    android:layout_height="45dp"
+    android:accessibilityHeading="false"
+    android:background="@drawable/info_window_shape"
+    android:orientation="vertical"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp">
+
+    <TextView
+        android:id="@+id/city"
+        android:layout_width="60dp"
+        android:layout_height="wrap_content"
+        android:maxWidth="60dp"
+        android:text="서울"
+        android:textSize="12sp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxWidth="60dp"
+        android:text="21.5억"
+        android:textSize="14sp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:visibility="visible" />
+
+    <TextView
+        android:id="@+id/count"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxWidth="60dp"
+        android:text="(42,300건)"
+        android:textSize="8sp"
+        android:textColor="#000000"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:visibility="visible" />
+
+</LinearLayout>
