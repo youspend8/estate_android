@@ -25,7 +25,6 @@ public class MainActivity extends FragmentActivity {
         NaverMapFragment mapFragment = (NaverMapFragment) fragmentManager.findFragmentById(R.id.map);
         mapFragment.init(this);
 
-//
         /**
          * GPS 권한 요청
          */

@@ -67,8 +67,7 @@ public class NaverMapFragment extends MapFragment implements OnMapReadyCallback 
                 Log.i("response data", list + "");
 
                 markers.removeAllOnMap();
-                markers.setMarkersFrom(list);
-                markers.addAllOnMap(naverMap);
+                markers.addMarkersFrom(list);
             }
 
             @Override

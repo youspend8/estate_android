@@ -6,6 +6,8 @@ import java.util.List;
 import kr.co.estate.dto.ApiResponse;
 import kr.co.estate.dto.CityCodeDto;
 import kr.co.estate.dto.TradeAggsDto;
+import kr.co.estate.dto.TradeSearchDto;
+import kr.co.estate.dto.TradeStatsDto;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
@@ -36,4 +38,22 @@ public interface RetrofitApiSpecification {
                                                          @Query("southLat") double southLat,
                                                          @Query("westLong") double westLong,
                                                          @Query("zoom") int zoom);
+
+    @GET("/estate/api/v1/trade/search?")
+    Call<ApiResponse<List<TradeSearchDto>>> tradeSearch(@Query("name") String name,
+                                                        @Query("region") String region,
+                                                        @Query("sigungu") String sigungu,
+                                                        @Query("page") int page,
+                                                        @Query("size") int size,
+                                                        @Query("sortType") String sortType,
+                                                        @Query("sortMode") String sortMode);
+
+    @GET("/estate/api/v1/trade/stats?")
+    Call<ApiResponse<TradeStatsDto>> tradeStats(@Query("name") String name,
+                                                @Query("region") String region,
+                                                @Query("sigungu") String sigungu,
+                                                @Query("page") int page,
+                                                @Query("size") int size,
+                                                @Query("sortType") String sortType,
+                                                @Query("sortMode") String sortMode);
 }

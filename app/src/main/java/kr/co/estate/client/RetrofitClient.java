@@ -15,7 +15,8 @@ public class RetrofitClient {
         OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor).build();
 
         retrofit = new Retrofit.Builder()
-                .baseUrl("http://10.0.2.2:8000")
+//                .baseUrl("http://10.0.2.2:8000")
+                .baseUrl("https://www.chaehoon.kr")
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(client)
                 .build();

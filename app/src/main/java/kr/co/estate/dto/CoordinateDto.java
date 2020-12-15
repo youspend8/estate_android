@@ -4,6 +4,8 @@ import com.google.gson.annotations.SerializedName;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.overlay.Marker;
 
+import java.io.Serializable;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +15,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @AllArgsConstructor
-public class CoordinateDto {
+public class CoordinateDto implements Serializable {
     @SerializedName("longitude")
     private double longitude;
 
