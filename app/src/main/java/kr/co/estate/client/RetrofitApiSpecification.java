@@ -37,7 +37,8 @@ public interface RetrofitApiSpecification {
                                                          @Query("eastLong") double eastLong,
                                                          @Query("southLat") double southLat,
                                                          @Query("westLong") double westLong,
-                                                         @Query("zoom") int zoom);
+                                                         @Query("zoom") int zoom,
+                                                         @Query("tradeType") String tradeType);
 
     @GET("/estate/api/v1/trade/search?")
     Call<ApiResponse<List<TradeSearchDto>>> tradeSearch(@Query("name") String name,
@@ -46,14 +47,14 @@ public interface RetrofitApiSpecification {
                                                         @Query("page") int page,
                                                         @Query("size") int size,
                                                         @Query("sortType") String sortType,
-                                                        @Query("sortMode") String sortMode);
+                                                        @Query("sortMode") String sortMode,
+                                                        @Query("tradeType") String tradeType);
 
     @GET("/estate/api/v1/trade/stats?")
     Call<ApiResponse<TradeStatsDto>> tradeStats(@Query("name") String name,
                                                 @Query("region") String region,
                                                 @Query("sigungu") String sigungu,
-                                                @Query("page") int page,
-                                                @Query("size") int size,
                                                 @Query("sortType") String sortType,
-                                                @Query("sortMode") String sortMode);
+                                                @Query("sortMode") String sortMode,
+                                                @Query("tradeType") String tradeType);
 }

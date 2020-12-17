@@ -41,7 +41,7 @@
                         android:text="지역" />
 
                     <kr.co.estate.view.TableHeaderTextView
-                        android:text="평균가격" />
+                        android:text="평당가격" />
 
                     <kr.co.estate.view.TableHeaderTextView
                         android:text="거래건수" />
@@ -49,60 +49,73 @@
                 </TableRow>
             </TableLayout>
 
-            <HorizontalScrollView
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="10dp"
+                android:orientation="vertical"
                 android:background="@color/colorWhite"
-                android:layout_marginBottom="10dp">
+                android:layout_marginBottom="10dp"
+                android:paddingLeft="10dp">
 
-                <TableLayout
-                    android:id="@+id/searchListTable"
+                <kr.co.estate.view.SectionTitleTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:stretchColumns="*"
+                    android:text="실거래 상세 내역" />
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <TableLayout
+                        android:id="@+id/searchListTable"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:stretchColumns="*"
+                        android:paddingBottom="10dp">
+                        <TableRow
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:gravity="center"
+                            android:orientation="horizontal">
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="이름" />
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="거래일자" />
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="보증금" />
+            <!--                <kr.co.estate.view.TableHeaderTextView-->
+            <!--                    android:text="월세" />-->
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="건축년도" />
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="면적" />
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="층" />
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="시군구" />
+                            <kr.co.estate.view.TableHeaderTextView
+                                android:text="동" />
+                        </TableRow>
+                    </TableLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:paddingBottom="10dp">
 
-                    <kr.co.estate.view.SectionTitleTextView
-                        android:text="실거래 상세 내역" />
-
-                    <TableRow
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent"
-                        android:gravity="center"
-                        android:orientation="horizontal">
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="이름" />
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="거래일자" />
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="보증금" />
-
-        <!--                <kr.co.estate.view.TableHeaderTextView-->
-        <!--                    android:text="월세" />-->
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="건축년도" />
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="면적" />
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="층" />
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="시군구" />
-
-                        <kr.co.estate.view.TableHeaderTextView
-                            android:text="동" />
-
-                    </TableRow>
-                </TableLayout>
-            </HorizontalScrollView>
+                    <Button
+                        android:id="@+id/moreBtn"
+                        android:layout_width="70dp"
+                        android:layout_height="28dp"
+                        android:padding="0dp"
+                        android:text="+ 더보기"
+                        android:background="@drawable/corner_radius_color_default"
+                        android:textColor="@color/colorWhite" />
+                </LinearLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -110,6 +123,7 @@
                 android:background="@color/colorWhite"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
+                android:paddingBottom="10dp"
                 android:orientation="vertical">
 
                 <kr.co.estate.view.SectionTitleTextView
@@ -120,9 +134,7 @@
                 <com.github.mikephil.charting.charts.BarChart
                     android:id="@+id/cityChart"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"/>
+                    android:layout_height="match_parent" />
 
             </LinearLayout>
 

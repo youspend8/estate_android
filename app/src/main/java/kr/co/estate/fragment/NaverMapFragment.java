@@ -45,7 +45,8 @@ public class NaverMapFragment extends MapFragment implements OnMapReadyCallback 
                 , naverMap.getContentBounds().getEastLongitude()
                 , naverMap.getContentBounds().getSouthLatitude()
                 , naverMap.getContentBounds().getWestLongitude()
-                , zoom == 0 ? 15 : (int) zoom);
+                , zoom == 0 ? 15 : (int) zoom
+                , "TRADE");
 
         call.enqueue(new Callback<ApiResponse<List<TradeAggsDto>>>() {
             @Override
