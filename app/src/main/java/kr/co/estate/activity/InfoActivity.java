@@ -41,8 +41,8 @@ public class InfoActivity extends AppCompatActivity {
     private Radio orderRadio;
     private LinearLayout tradeAggregateCityChartSection;
     private TradeAggsDto tradeAggsDto;
-    private String sortType;
-    private String sortMode;
+    private String sortType = "amount";
+    private String sortMode = "desc";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,7 +110,7 @@ public class InfoActivity extends AppCompatActivity {
 
         moreBtn.setOnClickListener(e -> fetchTradeSearch(++page, sortType, sortMode));
 
-        fetchTradeSearch(page, "amount", "desc");
+        fetchTradeSearch(page, sortType, sortMode);
         fetchTradeStatsPeriod(tradeAggsDto);
         fetchTradeStats(tradeAggsDto);
     }
