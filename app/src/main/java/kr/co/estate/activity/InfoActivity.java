@@ -108,7 +108,7 @@ public class InfoActivity extends AppCompatActivity {
             fetchTradeSearch(page, sortType, sortMode);
         });
 
-        moreBtn.setOnClickListener(e -> fetchTradeSearch(page++, sortType, sortMode));
+        moreBtn.setOnClickListener(e -> fetchTradeSearch(++page, sortType, sortMode));
 
         fetchTradeSearch(page, "amount", "desc");
         fetchTradeStatsPeriod(tradeAggsDto);
