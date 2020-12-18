@@ -4,7 +4,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".InfoActivity">
+    tools:context=".activity.InfoActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,39 +15,27 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-
-            <TableLayout
-                android:id="@+id/aggregationTable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
                 android:orientation="vertical"
-                android:stretchColumns="*"
-                android:paddingBottom="10dp"
+                android:background="@color/colorWhite"
+                android:layout_marginBottom="10dp"
                 android:paddingLeft="10dp"
                 android:paddingRight="10dp"
-                android:background="@color/colorWhite"
-                android:layout_marginBottom="10dp">
+                android:paddingBottom="10dp">
 
                 <kr.co.estate.view.SectionTitleTextView
-                    android:text="지역별 통계" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="날짜별 통계" />
 
-                <TableRow
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                <kr.co.estate.chart.TradeAggregatePeriodChart
+                    android:id="@+id/periodChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
-                    <kr.co.estate.view.TableHeaderTextView
-                        android:text="지역" />
-
-                    <kr.co.estate.view.TableHeaderTextView
-                        android:text="평당가격" />
-
-                    <kr.co.estate.view.TableHeaderTextView
-                        android:text="거래건수" />
-
-                </TableRow>
-            </TableLayout>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -57,10 +45,27 @@
                 android:layout_marginBottom="10dp"
                 android:paddingLeft="10dp">
 
-                <kr.co.estate.view.SectionTitleTextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="실거래 상세 내역" />
+                    android:paddingRight="10dp">
+
+                    <kr.co.estate.view.SectionTitleTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="실거래 상세 내역" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1" />
+
+                    <kr.co.estate.view.radio.Radio
+                        android:id="@+id/orderRadio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent" />
+
+                </LinearLayout>
 
                 <HorizontalScrollView
                     android:layout_width="wrap_content"
@@ -117,7 +122,41 @@
                 </LinearLayout>
             </LinearLayout>
 
+            <TableLayout
+                android:id="@+id/tradeStatsCityTable"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:stretchColumns="*"
+                android:paddingBottom="10dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:background="@color/colorWhite"
+                android:layout_marginBottom="10dp">
+
+                <kr.co.estate.view.SectionTitleTextView
+                    android:text="지역별 통계" />
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <kr.co.estate.view.TableHeaderTextView
+                        android:text="지역" />
+
+                    <kr.co.estate.view.TableHeaderTextView
+                        android:text="평당가격" />
+
+                    <kr.co.estate.view.TableHeaderTextView
+                        android:text="거래건수" />
+
+                </TableRow>
+            </TableLayout>
+
             <LinearLayout
+                android:id="@+id/tradeAggregateCityChartSection"
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
                 android:background="@color/colorWhite"
@@ -131,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:text="지역별 실거래 평균가 그래프" />
 
-                <com.github.mikephil.charting.charts.BarChart
+                <kr.co.estate.chart.TradeAggregateCityChart
                     android:id="@+id/cityChart"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />

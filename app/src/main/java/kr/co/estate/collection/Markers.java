@@ -9,7 +9,7 @@ import com.naver.maps.map.overlay.InfoWindow;
 import java.util.ArrayList;
 import java.util.List;
 
-import kr.co.estate.InfoActivity;
+import kr.co.estate.activity.InfoActivity;
 import kr.co.estate.adapter.InfoWindowAdapter;
 import kr.co.estate.dto.CoordinateDto;
 import kr.co.estate.dto.TradeAggsDto;

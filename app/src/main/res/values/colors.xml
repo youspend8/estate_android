@@ -10,4 +10,6 @@
     <color name="colorWhiteGrey">#f5f5f5</color>
     <color name="colorGrey">#eeeeee</color>
     <color name="colorDefault">#fe7800</color>
+    <color name="colorDark">#000000</color>
+    <color name="colorGreyText">#a7a7a7</color>
 </resources>

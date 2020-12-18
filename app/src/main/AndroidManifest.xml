@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".InfoActivity"
+            android:name=".activity.InfoActivity"
             android:theme="@style/AnimTheme">
 
         </activity>
